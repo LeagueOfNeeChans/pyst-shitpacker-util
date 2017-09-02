@@ -1,0 +1,46 @@
+{
+	"textbox": {
+		"bottom": 10,
+		"width": 800,
+		"height": 300,
+		"hAlign": "center"
+	},
+	"actors": {
+		"left": {
+			"z-index": -2,
+			"scale": 1,
+			"left": 0,
+			"bottom": 0
+		},
+		"right": {
+			"z-index": -2,
+			"scale": 1,
+			"right": 0,
+			"bottom": 0
+		},
+		"center": {
+			"z-index": -2,
+			"scale": 1,
+			"hAlign": "center",
+			"bottom": 0
+		},
+		"closeCenter": {
+			"z-index": -1,
+			"scale": 2,
+			"hAlign": "center",
+			"bottom": 0
+		},
+		"farCenter": {
+			"z-index": -3,
+			"scale": 0.5,
+			"hAlign": "center",
+			"bottom": 0
+		},
+		"inYourFace": {
+			"z-index": 1,
+			"scale": 2,
+			"hAlign": "center",
+			"bottom": 0
+		}
+	}
+}
