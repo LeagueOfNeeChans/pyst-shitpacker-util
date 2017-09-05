@@ -2,7 +2,7 @@ def start():
 	return "scene1"
 	
 def scene1():
-	scene.move("classroom")
+	scene.enter("classroom", "fadeIn", 10)
 	narrator.say("You see a bouquet of roses on the table")
 	engine.choice("Take the flowers!", "scene2")
 	engine.choice("Hmmm...better not...", "scene3")
@@ -15,8 +15,7 @@ def scene2():
 	
 def scene3():
 	narrator.say("You see Yumi...what is she doing here?")
-	scene.add_actor(yumi, "right")
-	yumi.change("default")
+	yumi.enterScene("default", "right", "fadeIn", 10)
 	yumi.say("Um..." + player.name + "-kun?")
 	if player.has("flowers"):
 		narrator.say("You look at her and blush...she notices the flowers in your hand")
@@ -42,12 +41,11 @@ def movie():
 def sad_scene():
 	yumi.change("sad")
 	yumi.say(player.name + " I HATE YOU!")
-	scene.remove_actor(yumi);
+	yumi.exitScene("fadeOut", 10)
 	if player.is_set("chose_russia"):
-		scene.add_actor(russia, "right")
 		narrator.say("As Yumi runs away you feel the presence of someone behind you.")
 		narrator.say("You turn around and see Russia.")
-		russia.change("prideful")
+		russia.enterScene("prideful", "right", "fadeIn", 10)
 		russia.say("You made the right choice...")
 		narrator.say("With that Russia took your face in her hands and kissed you.")
 		russia.change("smiling")
@@ -76,7 +74,8 @@ def kiss_yumi():
 def put_it_in():
 	yumi.change("angry")
 	yumi.say("I AM GOING TO END YOU!")
-	scene.remove_actor(yumi)
-	scene.move("hell")
+	yumi.exitScene("fadeOut", 1)
+	scene.exit("fadeOut", 1)
+	scene.enter("hell", "fadeIn", 10)
 	narrator.say("You died and went to hell...maybe putting it in wasn't such a good idea...hey look Obama's here too.")
 	return "_end"
