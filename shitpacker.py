@@ -21,7 +21,8 @@ shitHeap = {
 		"textbox": {},
 		"actors": {}
 	},
-	"script": ""
+	"pystScript": "",
+	"jystScript": ""
 }
 
 # Process actors
@@ -94,7 +95,11 @@ with open(pystDir + "/game.layout", 'r') as f:
 
 # Add script
 with open(pystDir + "/game.pyst", 'r') as f:
-	shitHeap["script"] = f.read().encode('base64').rstrip()
+	shitHeap["pystScript"] = f.read().encode('base64').rstrip()
+
+# Add script
+with open(pystDir + "/game.jyst", 'r') as f:
+	shitHeap["jystScript"] = f.read().encode('base64').rstrip()
 
 # Dump shit heap
 with open(shitHeapFile, 'w') as f:

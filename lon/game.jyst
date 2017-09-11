@@ -1,0 +1,94 @@
+function start() {
+	return "scene1";
+}
+
+function scene1() {
+	scene.enter("classroom", "fadeIn", 10);
+	narrator.say("You see a bouquet of roses on the table");
+	engine.choice("Take the flowers!", "scene2");
+	engine.choice("Hmmm...better not...", "scene3");
+	return "_wait";
+}
+
+function scene2() {
+	narrator.say("You take the flowers.");
+	player.receive("flowers");
+	return "scene3";
+}
+
+function scene3() {
+	narrator.say("You see Yumi...what is she doing here?");
+	yumi.enterScene("default", "right", "fadeIn", 10);
+	yumi.say("Um..." + player.name + "-kun?");
+	if (player.has("flowers")) {
+		narrator.say("You look at her and blush...she notices the flowers in your hand");
+		yumi.change("wishful");
+		yumi.say("Oh..." + player.name + "...are those for me?");
+		engine.choice("Um...yes...I...", "confession");
+		engine.choice("No...they are for Cashmere.", "choose_russia");
+	} else {
+		yumi.say("Would you like to go to a movie with me?");
+		engine.choice("Yes", "movie");
+		engine.choice("No thanks", "sad_scene");
+	}
+	
+	return "_wait";
+}
+
+function choose_russia() {
+	player.set("chose_russia");
+	return "sad_scene";
+}
+
+function movie() {
+	yumi.say("Okay =).  Pick me up at 8pm?");
+	return "_end";
+}
+
+function sad_scene() {
+	yumi.change("sad");
+	yumi.say(player.name + " I HATE YOU!");
+	yumi.exitScene("fadeOut", 10);
+	if (player.is_set("chose_russia")) {
+		narrator.say("As Yumi runs away you feel the presence of someone behind you.");
+		narrator.say("You turn around and see Russia.");
+		russia.enterScene("prideful", "right", "fadeIn", 10);
+		russia.say("You made the right choice...");
+		narrator.say("With that Russia took your face in her hands and kissed you.");
+		russia.change("smiling");
+		russia.say("Don't worry, Yumi will be alright.");
+		russia.change("saluting");
+		russia.say("AHHHHH MOTHERLAND!");
+	}
+	return "_end";
+}
+
+function confession() {
+	player.give(yumi, "flowers");
+	yumi.say("Oh " + player.name + "...I love you!");
+	engine.choice("Hug her", "hug_yumi");
+	engine.choice("Kiss her", "kiss_yumi");
+	engine.choice("Put it in", "put_it_in");
+	return "_wait";
+}
+
+function hug_yumi() {
+	yumi.say("I'm so happy!");
+	return "_end";
+}
+
+function kiss_yumi() {
+	yumi.change("embarrassed");
+	yumi.say("Mmmph!  What are you doing?");
+	return "_end";
+}
+
+function put_it_in() {
+	yumi.change("angry");
+	yumi.say("I AM GOING TO END YOU!");
+	yumi.exitScene("fadeOut", 1);
+	scene.exit("fadeOut", 1);
+	scene.enter("hell", "fadeIn", 10);
+	narrator.say("You died and went to hell...maybe putting it in wasn't such a good idea...hey look Obama's here too.");
+	return "_end";
+}
