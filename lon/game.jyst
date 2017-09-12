@@ -23,7 +23,7 @@ function scene3() {
 	if (player.has("flowers")) {
 		narrator.say("You look at her and blush...she notices the flowers in your hand");
 		yumi.change("wishful");
-		yumi.say("Oh..." + player.name + "...are those for me?");
+		yumi.say("Oh..." + player.name + "...are those for me? :heart:");
 		engine.choice("Um...yes...I...", "confession");
 		engine.choice("No...they are for Cashmere.", "choose_russia");
 	} else {
@@ -79,7 +79,7 @@ function hug_yumi() {
 
 function kiss_yumi() {
 	yumi.change("embarrassed");
-	yumi.say("Mmmph!  What are you doing?");
+	yumi.say("Mmmph!  What are you doing? :heart::heart:");
 	return "_end";
 }
 
