@@ -16,7 +16,8 @@ shitHeap = {
 	"assets": {
 		"actors": {},
 		"scenes": {},
-		"skins": {}
+		"skins": {},
+		"fonts": {}
 	},
 	"layout": {
 		"textbox": {},
@@ -89,6 +90,30 @@ for root, subdirs, files in os.walk(pystDir + "/assets/skins"):
 						"image": skinImage.read().encode('base64').rstrip(),
 						"mimeType": "image/" + extension[1:]
 					}
+
+# Process skins
+print "FONTS:"
+for root, subdirs, files in os.walk(pystDir + "/assets/fonts"):
+	for subdir in subdirs:
+		font = shitHeap["assets"]["fonts"][subdir] = {
+			"image": "",
+			"xml": ""
+		}
+		for root2, subdirs2, files2 in os.walk(root + "/" + subdir):
+			for file in files2:
+				if file == ".DS_Store":
+					continue
+
+				print "\t" + file
+
+				extension = os.path.splitext(file)[1]
+
+				if (extension == ".png" and font["image"] != None):
+					with open(root2 + "/" + file, 'rb') as fontImage:
+						font["image"] = fontImage.read().encode('base64').rstrip()
+				elif (extension == ".fnt" and font["xml"] != None):
+					with open(root2 + "/" + file, 'rb') as fontXml:
+						font["xml"] = fontXml.read().encode('base64').rstrip()
 
 # Add layout
 with open(pystDir + "/game.layout", 'r') as f:
