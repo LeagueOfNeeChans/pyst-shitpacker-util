@@ -2,46 +2,52 @@
 	"textbox": {
 		"bottom": "10px",
 		"width": "80%",
-		"height": "20%",
 		"hAlign": "center",
-		"font": "Marker"
+		"font": "Marker",
+		"fontSize": "25px"
 	},
 	"actors": {
 		"left": {
 			"z-index": -2,
 			"scale": 1,
 			"left": "0px",
-			"bottom": "0px"
+			"bottom": "0px",
+			"height": "90%"
 		},
 		"right": {
 			"z-index": -2,
 			"scale": 1,
 			"right": "0px",
-			"bottom": "0px"
+			"bottom": "0px",
+			"height": "90%"
 		},
 		"center": {
 			"z-index": -2,
 			"scale": 1,
 			"hAlign": "center",
-			"bottom": "0px"
+			"bottom": "0px",
+			"height": "90%"
 		},
 		"closeCenter": {
 			"z-index": -1,
 			"scale": 2,
 			"hAlign": "center",
-			"bottom": "0px"
+			"bottom": "0px",
+			"height": "90%"
 		},
 		"farCenter": {
 			"z-index": -3,
 			"scale": 0.5,
 			"hAlign": "center",
-			"bottom": "0px"
+			"bottom": "0px",
+			"height": "90%"
 		},
 		"inYourFace": {
 			"z-index": 1,
 			"scale": 2,
 			"hAlign": "center",
-			"bottom": "0px"
+			"bottom": "0px",
+			"height": "90%"
 		}
 	}
 }
